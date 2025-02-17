@@ -10,21 +10,17 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Reviews {
+public class Movie_Genre {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    String review_id;
-
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    Users user;
+    String id;
 
     @ManyToOne
     @JoinColumn(name = "movie_id")
-    Movies movie;
+    Movie movie;
 
-    Integer rating;
-    @Column(length = 1000)
-    String review_text;
+    @ManyToOne
+    @JoinColumn(name = "genre_id")
+    Genre genre;
 }

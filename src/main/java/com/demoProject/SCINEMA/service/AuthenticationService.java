@@ -4,7 +4,7 @@ import com.demoProject.SCINEMA.dto.reponse.AuthenticationResponse;
 import com.demoProject.SCINEMA.dto.reponse.IntrospectResponse;
 import com.demoProject.SCINEMA.dto.request.AuthenticationRequest;
 import com.demoProject.SCINEMA.dto.request.IntrospectRequest;
-import com.demoProject.SCINEMA.entity.Users;
+import com.demoProject.SCINEMA.entity.User;
 import com.demoProject.SCINEMA.exception.AppException;
 import com.demoProject.SCINEMA.exception.ErrorCode;
 import com.demoProject.SCINEMA.repository.UserRepository;
@@ -81,7 +81,7 @@ public class AuthenticationService
                 .build();
     }
 
-    private String generateToken(Users user)
+    private String generateToken(User user)
     {
         JWSHeader header = new JWSHeader(JWSAlgorithm.HS512);
 
@@ -107,7 +107,7 @@ public class AuthenticationService
         }
     }
 
-    private String buildScope(Users user)
+    private String buildScope(User user)
     {
         StringJoiner stringJoiner = new StringJoiner(" ");
 

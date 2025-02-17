@@ -1,5 +1,6 @@
 package com.demoProject.SCINEMA.entity;
 
+
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -10,17 +11,15 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Movie_Genres {
+public class Movie {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    String id;
-
-    @ManyToOne
-    @JoinColumn(name = "movie_id")
-    Movies movie;
-
-    @ManyToOne
-    @JoinColumn(name = "genre_id")
-    Genres genre;
+    String movie_id;
+    String name;
+    String language;
+    String director;
+    String actor;
+    Integer duration;
 }
+

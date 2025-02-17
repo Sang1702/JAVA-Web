@@ -4,7 +4,7 @@ import com.demoProject.SCINEMA.dto.reponse.UserResponse;
 import com.demoProject.SCINEMA.dto.request.ApiResponse;
 import com.demoProject.SCINEMA.dto.request.UserCreationRequest;
 import com.demoProject.SCINEMA.dto.request.UserUpdateRequest;
-import com.demoProject.SCINEMA.entity.Users;
+import com.demoProject.SCINEMA.entity.User;
 import com.demoProject.SCINEMA.service.UserService;
 import jakarta.validation.Valid;
 import lombok.AccessLevel;
@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -34,15 +35,32 @@ public class UserController
     }
 
     @GetMapping
-    List<Users> getUsers()
+    ApiResponse<List<UserResponse>> getUsers()
     {
-        return userService.getUsers();
+        var authentication =  SecurityContextHolder.getContext().getAuthentication();
+
+        log.info("Username : {}", authentication.getName());
+        authentication.getAuthorities().forEach(grantedAuthority -> log.info(grantedAuthority.getAuthority()));
+
+        return ApiResponse.<List<UserResponse>>builder()
+                .result(userService.getUsers())
+                .build();
     }
 
     @GetMapping("/{userId}")
-    UserResponse getUser(@PathVariable String userId)
+    ApiResponse<UserResponse> getUser(@PathVariable("userId") String userId)
     {
-        return userService.getUser(userId);
+        return ApiResponse.<UserResponse>builder()
+                .result(userService.getUser(userId))
+                .build();
+    }
+
+    @GetMapping("/myInfo")
+    ApiResponse<UserResponse> getMyInfo()
+    {
+        return ApiResponse.<UserResponse>builder()
+                .result(userService.getMyInfo())
+                .build();
     }
 
     @PutMapping("{userId}")

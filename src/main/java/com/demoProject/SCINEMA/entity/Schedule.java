@@ -25,7 +25,7 @@ public class Schedule {
 
     @ManyToOne
     @JoinColumn(name = "movie_id")
-    Movies movie;
+    Movie movie;
 
     @ManyToOne
     @JoinColumn(name = "room_id")

@@ -1,8 +1,8 @@
 package com.demoProject.SCINEMA.controller;
 
-import com.demoProject.SCINEMA.dto.reponse.PermissionReponse;
+import com.demoProject.SCINEMA.dto.reponse.PermissionResponse;
 import com.demoProject.SCINEMA.dto.request.ApiResponse;
-import com.demoProject.SCINEMA.dto.request.PermissiongRequest;
+import com.demoProject.SCINEMA.dto.request.PermissionRequest;
 import com.demoProject.SCINEMA.service.PermissionService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -22,17 +22,17 @@ public class PermissionController
     PermissionService permissionService;
 
     @PostMapping
-    ApiResponse<PermissionReponse> create(@RequestBody PermissiongRequest request)
+    ApiResponse<PermissionResponse> create(@RequestBody PermissionRequest request)
     {
-        return ApiResponse.<PermissionReponse>builder()
+        return ApiResponse.<PermissionResponse>builder()
                 .result(permissionService.create(request))
                 .build();
     }
 
     @GetMapping
-    ApiResponse<List<PermissionReponse>> getAll()
+    ApiResponse<List<PermissionResponse>> getAll()
     {
-        return ApiResponse.<List<PermissionReponse>>builder()
+        return ApiResponse.<List<PermissionResponse>>builder()
                 .result(permissionService.getAll())
                 .build();
     }

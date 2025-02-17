@@ -1,11 +1,8 @@
 package com.demoProject.SCINEMA.entity;
 
-
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-
-import java.util.Set;
 
 @Entity
 @Data
@@ -13,12 +10,12 @@ import java.util.Set;
 @AllArgsConstructor
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Roles
-{
-    @Id
-    String role_name;
-    String description;
+public class Paymentmethod {
 
-    @ManyToMany
-    Set<Permission> permissions;
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    String paymentMethod_id;
+    @Column(nullable = false)
+    String method_name;
+    String description;
 }

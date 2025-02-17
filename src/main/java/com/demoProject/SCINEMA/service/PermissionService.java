@@ -1,7 +1,7 @@
 package com.demoProject.SCINEMA.service;
 
-import com.demoProject.SCINEMA.dto.reponse.PermissionReponse;
-import com.demoProject.SCINEMA.dto.request.PermissiongRequest;
+import com.demoProject.SCINEMA.dto.reponse.PermissionResponse;
+import com.demoProject.SCINEMA.dto.request.PermissionRequest;
 import com.demoProject.SCINEMA.entity.Permission;
 import com.demoProject.SCINEMA.mapper.PermissionMapper;
 import com.demoProject.SCINEMA.repository.PermissionRepository;
@@ -22,7 +22,7 @@ public class PermissionService
     PermissionRepository permissionRepository;
     PermissionMapper permissionMapper;
 
-    public PermissionReponse create(PermissiongRequest request)
+    public PermissionResponse create(PermissionRequest request)
     {
         Permission permission = permissionMapper.toPermission(request);
 
@@ -30,7 +30,7 @@ public class PermissionService
         return permissionMapper.toPermissionResponse(permission);
     }
 
-    public List<PermissionReponse> getAll()
+    public List<PermissionResponse> getAll()
     {
         var permissions = permissionRepository.findAll();
         return permissions.stream().map(permissionMapper::toPermissionResponse).toList();

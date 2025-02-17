@@ -1,6 +1,5 @@
 package com.demoProject.SCINEMA.entity;
 
-
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -11,15 +10,10 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Movies {
+public class Genre {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    String movie_id;
-    String name;
-    String language;
-    String director;
-    String actor;
-    Integer duration;
+    String genre_id;
+    String name_genre;
 }
-

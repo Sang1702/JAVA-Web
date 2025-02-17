@@ -10,12 +10,21 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Paymentmethods {
+public class Review {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    String payment_method_id;
-    @Column(nullable = false)
-    String method_name;
-    String description;
+    String review_id;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    User user;
+
+    @ManyToOne
+    @JoinColumn(name = "movie_id")
+    Movie movie;
+
+    Integer rating;
+    @Column(length = 1000)
+    String review_text;
 }

@@ -20,13 +20,13 @@ public class Bill {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    Users user;
+    User user;
 
     Double total_price;
     LocalDateTime build_date;
     String status;
 
     @ManyToOne
-    @JoinColumn(name = "payment_method_id")
-    Paymentmethods paymentmethod;
+    @JoinColumn(name = "paymentMethod_id")
+    Paymentmethod paymentmethod;
 }

@@ -1,4 +1,4 @@
-package com.demoProject.SCINEMA.dto.reponse;
+package com.demoProject.SCINEMA.dto.request;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -8,7 +8,7 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Builder
-public class PermissionReponse
+public class PermissionRequest
 {
     String name;
     String description;
